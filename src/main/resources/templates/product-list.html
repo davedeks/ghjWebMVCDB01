@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WebMVCDB03 Product List 03</title>
+</head>
+<body style="background-color:powderblue;">
+    <h1 style="color: blue; text-decoration: underline">Products 03</h1>
+
+    <br/><br/>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}">1</td>
+            <td th:text="${product.name}">Name</td>
+            <td th:text="${product.price}">0.00</td>
+        </tr>
+    </table>
+    <a href="/products/new">Add New Product</a>
+</body>
+</html>

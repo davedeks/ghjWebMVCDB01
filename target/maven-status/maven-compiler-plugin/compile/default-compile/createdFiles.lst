@@ -1,0 +1,4 @@
+com\mssq301\AppMain.class
+com\mssq301\controller\ProductController.class
+com\mssq301\model\Product.class
+com\mssq301\repository\ProductRepository.class

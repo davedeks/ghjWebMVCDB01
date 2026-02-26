@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jwebmvcdb01
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jwebmvcdb01  
+  template:
+    metadata:
+      labels:
+        app: jwebmvcdb01
+      annotations:
+        sidecar.istio.io/inject: "true" 
+    spec:
+      containers:
+      - name: jwebmvcdb01
+        image: davedeks/jwebmvcdb01:latest
+        ports:
+        - containerPort: 8010
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8010
+          initialDelaySeconds: 30 # Adjust based on your application's startup time
+          periodSeconds: 10       # How often the probe runs (every 10 seconds)
+          timeoutSeconds: 5       # Timeout for the request
+          failureThreshold: 3     # Number of consecutive failures before restart

@@ -1,0 +1,16 @@
+apiVersion: networking.istio.io/v1beta1
+kind: ServiceEntry
+metadata:
+  name: serviceentry01-jwebmvcdb01
+  namespace: default # Must be in the same namespace as your web app
+spec:
+  hosts:
+  - davesql2022.local # Use the actual DNS name of your MSSQL server
+  addresses:
+  - 240.240.0.1
+  ports:
+  - number: 1433
+    name: tcp-mssql
+    protocol: TCP # MSSQL uses TCP
+  resolution: DNS # Use DNS if you have a hostname, otherwise use STATIC or NONE
+  location: MESH_EXTERNAL #

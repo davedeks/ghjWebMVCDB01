@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+      annotations:
+        # This annotation ensures Istio sidecar injection is enabled if not already enabled via namespace label
+        sidecar.istio.io/inject: "true" 
+    spec:
+      containers:
+      - name: web-app-container
+        image: davedeks/jwebmvcdb01:latest # Replace with your actual web application image
+        ports:
+        - containerPort: 8050 # Port your app listens on
+        env:
+        - name: DB_HOST
+          value: "DEKSNETPC" # Use the hostname defined in the ServiceEntry
+        - name: DB_PORT
+          value: "1433"
+        # Use Kubernetes secrets for sensitive information like passwords
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: mssql-credentials
+              key: username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mssql-credentials
+              key: password

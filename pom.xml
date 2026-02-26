@@ -9,13 +9,23 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mssq101</groupId>
-	<artifactId>webmvcdb03</artifactId>
+	<artifactId>osjwebmvcdb01</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>webmvcdb03</name>
+	<name>osj-webmvc-db01</name>
 	<description>Web MVC DB01 project for Spring Boot</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
 	<developers>
 		<developer/>
 	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
 	<properties>
 		<java.version>17</java.version>
 	</properties>

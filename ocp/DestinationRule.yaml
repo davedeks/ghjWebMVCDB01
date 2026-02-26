@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: external-sqlserver-dr
+  namespace: default
+spec:
+  host: DEKSNETPC
+  trafficPolicy:
+    tls:
+      # Use DISABLE if the database uses plain TCP without TLS.
+      # Use SIMPLE if the database expects standard TLS (which Istio will originate).
+      mode: DISABLE 
